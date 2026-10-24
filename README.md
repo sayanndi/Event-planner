@@ -7,7 +7,8 @@ Plan a **wedding, birthday or community event** in one click. Enter the date, gu
 - a **vendor checklist** with booking deadlines and the questions to ask each vendor
 - **personalised ideas** (themes, activities, menu, tips) from an LLM on Groq, or from built-in suggestions when no API key is set
 
-It works fully offline without an API key, so you can run it immediately.
+**Live demo:** https://event-planner-zkkr.onrender.com/
+**Demo video:** https://drive.google.com/file/d/1W2nOjRc-aqn2sa2qV68C5qmjE0aDuF8j/view
 
 ## Run it in VS Code
 
