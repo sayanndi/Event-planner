@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Planner - weddings, birthdays and community events</title>
+  <meta name="description" content="Get a budget, timeline, vendor checklist and ideas for your event in one click.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Event Planner</h1>
+    <p>A budget, timeline, vendor checklist and ideas for your wedding, birthday or community event.</p>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title">Tell us about your event</h2>
+      <form id="plan-form">
+        <div class="grid">
+          <div class="field">
+            <label for="event_type">Type of event</label>
+            <select id="event_type" name="event_type" required>
+              <option value="wedding">Wedding</option>
+              <option value="birthday">Birthday</option>
+              <option value="community">Community event</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="title">Event name</label>
+            <input id="title" name="title" type="text" maxlength="80" required placeholder="Asha &amp; Ravi's wedding">
+          </div>
+
+          <div class="field">
+            <label for="event_date">Event date</label>
+            <input id="event_date" name="event_date" type="date" required>
+          </div>
+
+          <div class="field">
+            <label for="guest_count">Number of guests</label>
+            <input id="guest_count" name="guest_count" type="number" inputmode="numeric" min="1" max="5000" step="1" value="100" required>
+          </div>
+
+          <div class="field">
+            <label for="total_budget">Total budget</label>
+            <input id="total_budget" name="total_budget" type="number" inputmode="decimal" min="1" max="1000000000" step="any" value="500000" required>
+          </div>
+
+          <div class="field">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency" required>
+              <option value="INR">INR - Indian rupee</option>
+              <option value="USD">USD - US dollar</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - British pound</option>
+              <option value="AED">AED - UAE dirham</option>
+              <option value="AUD">AUD - Australian dollar</option>
+              <option value="CAD">CAD - Canadian dollar</option>
+              <option value="SGD">SGD - Singapore dollar</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="location">City or area <span class="hint">(optional)</span></label>
+            <input id="location" name="location" type="text" maxlength="80" placeholder="Kolkata">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="preferences">Wishes and preferences <span class="hint">(optional)</span></label>
+          <textarea id="preferences" name="preferences" rows="3" maxlength="500"
+            placeholder="e.g. vegetarian food, outdoor, traditional music, kids attending"></textarea>
+        </div>
+
+        <p id="form-error" class="error" role="alert" hidden></p>
+        <button type="submit" id="submit-btn">Create my plan</button>
+      </form>
+    </section>
+
+    <section id="results" class="results" tabindex="-1" aria-live="polite" hidden>
+      <div class="card">
+        <div class="toolbar">
+          <h2 id="plan-title"></h2>
+          <div class="actions">
+            <button type="button" id="print-btn" class="secondary">Print or save as PDF</button>
+            <button type="button" id="download-btn" class="secondary">Download JSON</button>
+          </div>
+        </div>
+        <dl id="summary" class="summary"></dl>
+        <ul id="warnings" class="warnings"></ul>
+        <div class="progress-wrap">
+          <label for="progress">Your progress</label>
+          <progress id="progress" max="1" value="0"></progress>
+          <span id="progress-text"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Budget</h2>
+        <table id="budget-table">
+          <thead>
+            <tr><th scope="col">Category</th><th scope="col" class="num">Share</th><th scope="col" class="num">Amount</th><th scope="col" class="num">Per guest</th></tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Timeline</h2>
+        <ol id="timeline" class="tasks"></ol>
+      </div>
+
+      <div class="card">
+        <h2>Vendor checklist</h2>
+        <div id="vendors" class="vendor-grid"></div>
+      </div>
+
+      <div class="card">
+        <h2>Ideas for you <span id="ideas-source" class="badge"></span></h2>
+        <div id="ideas" class="ideas-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Estimates are guidance, not quotes. Always confirm prices and policies with your vendors.</p>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
